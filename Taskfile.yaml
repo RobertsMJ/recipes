@@ -1,0 +1,29 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  SKAFFOLD_VERSION: latest
+  GO_VERSION: 1.19.4
+
+tasks:
+  create-cluster:
+    cmds:
+      - k3d cluster create -c k8s/k3d-cluster.yaml
+  delete-cluster:
+    cmds:
+      - k3d cluster delete -c k8s/k3d-cluster.yaml
+  install-skaffold:
+    cmds:
+      - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/{{.SKAFFOLD_VERSION}}/skaffold-linux-amd64
+      - sudo install skaffold /usr/local/bin/
+      - rm skaffold
+  install-go:
+    cmds:
+      - curl -Lo go https://go.dev/dl/go{{.GO_VERSION}}.linux-amd64.tar.gz
+      - sudo rm -rf /usr/local/go
+      - sudo tar -C /usr/local -xzf go
+      - rm go
+  psql:
+    cmds:
+      - kubectl exec -it services/postgres -- psql --username=admin --host=localhost --dbname=postgres

@@ -1,0 +1,15 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: recipes
+
+manifests:
+  rawYaml:
+    - k8s/postgres/*
+    - k8s/backend/*
+
+portForward:
+  - resourceType: deployment
+    resourceName: backend
+    port: http
+    localPort: 8081

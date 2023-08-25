@@ -4,7 +4,8 @@ metadata:
   name: backend
 spec:
   ports:
-    - port: 5000
+    - name: http
+      port: 5000
   type: LoadBalancer
   selector:
     app: backend

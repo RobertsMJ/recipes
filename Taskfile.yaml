@@ -4,12 +4,13 @@ version: "3"
 
 vars:
   SKAFFOLD_VERSION: latest
-  GO_VERSION: 1.19.4
+  GO_VERSION: 1.21.0
 
 tasks:
   create-cluster:
     cmds:
       - k3d cluster create -c k8s/k3d-cluster.yaml
+      - k3d kubeconfig get cluster > ~/.kube/config
   delete-cluster:
     cmds:
       - k3d cluster delete -c k8s/k3d-cluster.yaml
@@ -18,12 +19,16 @@ tasks:
       - curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/{{.SKAFFOLD_VERSION}}/skaffold-linux-amd64
       - sudo install skaffold /usr/local/bin/
       - rm skaffold
+      - skaffold config set default-repo registry.localhost:5000
   install-go:
     cmds:
       - curl -Lo go https://go.dev/dl/go{{.GO_VERSION}}.linux-amd64.tar.gz
       - sudo rm -rf /usr/local/go
       - sudo tar -C /usr/local -xzf go
       - rm go
+  install-tilt:
+    cmds:
+      - curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
   psql:
     cmds:
       - kubectl exec -it services/postgres -- psql --username=admin --host=localhost --dbname=postgres

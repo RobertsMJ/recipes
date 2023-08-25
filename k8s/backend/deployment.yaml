@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  labels:
+    app: backend
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -13,6 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: registry.localhost:5000/backend
+          image: backend
           ports:
-            - containerPort: 8080
+            - name: http
+              containerPort: 8080

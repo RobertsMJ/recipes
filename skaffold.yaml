@@ -1,13 +1,23 @@
-apiVersion: skaffold/v3
+apiVersion: skaffold/v4beta6
 kind: Config
 metadata:
   name: recipes
-
+build:
+  artifacts:
+    - image: backend
+      context: backend
+      # sync:
+      #   manual:
+      #     - src: "**/*.go"
+      #       dest: /code
+#   local:
+#     push: true
+deploy:
+  kubeContext: k3d-cluster
 manifests:
   rawYaml:
-    - k8s/postgres/*
-    - k8s/backend/*
-
+    - k8s/backend/*.yaml
+    - k8s/postgres/*.yaml
 portForward:
   - resourceType: deployment
     resourceName: backend

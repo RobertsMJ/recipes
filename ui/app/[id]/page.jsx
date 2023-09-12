@@ -1,16 +1,19 @@
-import Link from "next/link";
+import RecipeDetails from "./RecipeDetails";
+import styles from "./page.module.scss";
 
-export function generateMetadata({ params }) {
+async function getRecipe(id) {
+  const res = await fetch(`http://localhost:3000/api/recipes/${id}`);
+  return res.json();
+}
+
+export async function generateMetadata({ params }) {
+  const { data: recipe } = await getRecipe(params.id);
   return {
-    title: `Recipe ${params.id}`,
+    title: `Recipe ${recipe.name}`,
   };
 }
 
-export default function Page({ params }) {
-  return (
-    <>
-      <Link href="/">Back to home page</Link>
-      <div>Recipe ID: {params.id}</div>
-    </>
-  );
+export default async function Page({ params }) {
+  const { data: recipe } = await getRecipe(params.id);
+  return <RecipeDetails recipe={recipe} />;
 }

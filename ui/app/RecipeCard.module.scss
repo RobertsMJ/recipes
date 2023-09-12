@@ -6,7 +6,7 @@
   margin: 9px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   text-decoration: none;
   &:hover {
@@ -16,10 +16,13 @@
       text-decoration: underline;
     }
   }
+
+  width: 100%;
 }
 
 .content {
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .cardtext p {

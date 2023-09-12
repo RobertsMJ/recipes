@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { recipes } from "@/api/data";
 
 export async function GET() {
-  const data = [{ id: 123 }, { id: 456 }];
+  const data = Object.values(recipes);
   return NextResponse.json({ data });
 }

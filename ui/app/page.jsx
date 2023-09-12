@@ -9,10 +9,8 @@ export async function generateMetadata() {
 
 export default async function Home() {
   return (
-    <>
-      <main className={styles.main}>
-        <RecipeList />
-      </main>
-    </>
+    <main className={styles.main}>
+      <RecipeList />
+    </main>
   );
 }

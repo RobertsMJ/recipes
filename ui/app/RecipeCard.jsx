@@ -14,10 +14,8 @@ export default function RecipeCard({ recipe }) {
         alt="Thumbnail image"
       />
       <div className={styles.content}>
-        <h3 className={styles.title}>Recipe {recipe.id}</h3>
-        <p className={styles.desc}>
-          I am a blurb describing the recipe in question
-        </p>
+        <h3 className={styles.title}>{recipe.name}</h3>
+        <p className={styles.desc}>{recipe.description}</p>
       </div>
     </Link>
   );

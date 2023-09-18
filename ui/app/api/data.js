@@ -1,3 +1,8 @@
+export function addRecipe(rec) {
+  recipes[rec.id] = rec;
+  console.log(recipes);
+}
+
 export const recipes = {
   123: {
     id: 123,

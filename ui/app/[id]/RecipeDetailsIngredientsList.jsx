@@ -4,8 +4,8 @@ export default function RecipeDetailsIngredientsList({
 }) {
   return (
     <ul className={className}>
-      {(ingredients || []).map((i) => (
-        <li>{`${i.qty}${i.unit} ${i.name}`}</li>
+      {(ingredients || []).map((i, idx) => (
+        <li key={idx}>{`${i.qty}${i.unit} ${i.name}`}</li>
       ))}
     </ul>
   );

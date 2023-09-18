@@ -1,5 +1,4 @@
 import RecipeDetails from "./RecipeDetails";
-import styles from "./page.module.scss";
 
 async function getRecipe(id) {
   const res = await fetch(`http://localhost:3000/api/recipes/${id}`);

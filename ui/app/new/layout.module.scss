@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20%;
+}
+
+.back {
+  align-self: flex-start;
+  margin-bottom: 2em;
+}

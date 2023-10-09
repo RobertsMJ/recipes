@@ -1,0 +1,11 @@
+.direction {
+  display: flex;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.add {
+  margin: 0 4px;
+}

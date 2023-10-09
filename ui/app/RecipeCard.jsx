@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function RecipeCard({ recipe }) {
   return (
     <li className={styles.listitem}>
-      <Link className={styles.card} href={"/" + recipe.id} key={recipe.id}>
+      <Link className={styles.card} href={"/" + recipe?.id} key={recipe?.id}>
         <Image
           src={thumbnail}
           className={styles.thumb}
@@ -15,8 +15,8 @@ export default function RecipeCard({ recipe }) {
           alt="Thumbnail image"
         />
         <div className={styles.content}>
-          <h3 className={styles.title}>{recipe.name}</h3>
-          <p className={styles.desc}>{recipe.description}</p>
+          <h3 className={styles.title}>{recipe?.name}</h3>
+          <p className={styles.desc}>{recipe?.description}</p>
         </div>
       </Link>
     </li>

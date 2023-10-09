@@ -10,15 +10,16 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
-    "next": "13.4.19",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.3",
+    "next": "^13.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.46.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "prettier": "^3.0.3",
-    "sass": "^1.66.1"
+    "sass": "^1.68.0"
   }
 }

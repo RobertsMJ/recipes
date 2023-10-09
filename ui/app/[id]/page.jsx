@@ -8,7 +8,7 @@ async function getRecipe(id) {
 export async function generateMetadata({ params }) {
   const { data: recipe } = await getRecipe(params.id);
   return {
-    title: `Recipe ${recipe.name}`,
+    title: `Recipe ${recipe?.name}`,
   };
 }
 

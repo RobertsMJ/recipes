@@ -12,14 +12,20 @@ export default function RecipeEditForm({ recipe, method, onSubmit }) {
     directions: recipe?.directions || [""],
   });
 
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
+  // const handleSubmit = useCallback(
+  //   (e) => {
+  //     e.preventDefault();
 
-      onSubmit(e, { ...form });
-    },
-    [form],
-  );
+  //     onSubmit(e, { ...form });
+  //   },
+  //   [form],
+  // );
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onSubmit(e, { ...form });
+  }
 
   return (
     <form method={method} onSubmit={handleSubmit} className={styles.form}>

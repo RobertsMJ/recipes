@@ -1,15 +1,10 @@
 import RecipeCard from "./RecipeCard";
 import styles from "./RecipeList.module.scss";
-
-async function getData() {
-  const res = await fetch("http://localhost:3000/api/recipes");
-  if (!res.ok) throw new Error("Failed to fetch recipes");
-  return res.json();
-}
+import { getRecipes } from "./new/actions";
 
 export default async function RecipeList() {
-  const { data } = await getData();
-  const recipes = data;
+  const recipes = await getRecipes();
+  console.log("rendering list", recipes.length);
 
   return (
     <ul className={styles.list}>

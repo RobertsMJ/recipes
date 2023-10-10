@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { addRecipe, recipes } from "@/api/data";
 import { v4 as uuidv4 } from "uuid";
-import { revalidatePath } from "next/cache";
 
 export async function GET() {
   const data = Object.values(recipes);
